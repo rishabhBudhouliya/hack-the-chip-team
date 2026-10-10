@@ -1,0 +1,18 @@
+endpoint http://localhost:8000/v1  model Qwen/Qwen3-8B
+Optimization target: {'M': 1024, 'K': 256, 'N': 1024}, float32; reuse example: False
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+Seed baseline: 131.87 us, 6.70x model floor, 14336 KiB
+round 0: correctness reward 0.62; 1 of 4 shapes passed. On K=256 M=256 N=1024: raised AssertionError: dma_copy requires src and dst to have the same number of elements, got src=131072, dst=65536 The tile you allocated holds 65536 elements but you copied 131072 into it. nisa.dma_copy does not slice or broadcast: allocate the destination with EXACTLY the shape of the slice you are moving. If you want a 128x512 piece of a bigger tens
+round 1: correctness reward 0.62; 1 of 4 shapes passed. On K=256 M=256 N=1024: raised AssertionError: dma_copy requires src and dst to have the same number of elements, got src=131072, dst=65536 The tile you allocated holds 65536 elements but you copied 131072 into it. nisa.dma_copy does not slice or broadcast: allocate the destination with EXACTLY the shape of the slice you are moving. If you want a 128x512 piece of a bigger tens
+round 2: correctness reward 0.62; 1 of 4 shapes passed. On K=256 M=256 N=1024: raised AssertionError: dma_copy requires src and dst to have the same number of elements, got src=131072, dst=65536 The tile you allocated holds 65536 elements but you copied 131072 into it. nisa.dma_copy does not slice or broadcast: allocate the destination with EXACTLY the shape of the slice you are moving. If you want a 128x512 piece of a bigger tens
+round 3: correctness reward 0.62; 1 of 4 shapes passed. On K=256 M=256 N=1024: raised AssertionError: dma_copy requires src and dst to have the same number of elements, got src=131072, dst=65536 The tile you allocated holds 65536 elements but you copied 131072 into it. nisa.dma_copy does not slice or broadcast: allocate the destination with EXACTLY the shape of the slice you are moving. If you want a 128x512 piece of a bigger tens
+Fastest correct compiled kernel: 131.87 us; saved to roofline_agent_repeats/20261010T190334/control_2_best.py. This is a compiler prediction, not a hardware timing.
+
+=========== summary ===========
+  level 4  reward 1.00 after 4 round(s)  SOLVED
+  solved 1/1
+
+attempts logged to roofline_agent_repeats/20261010T190334/control_2.jsonl

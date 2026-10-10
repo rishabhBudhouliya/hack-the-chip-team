@@ -1,0 +1,73 @@
+{
+  "metric": "profiled device execution duration",
+  "mapping": "Benchmark executes reference first and candidate second; later executions mapped by the corresponding model IDs.",
+  "excluded_per_kernel": 11,
+  "crosscheck_max_error_ns": 1,
+  "stats": {
+    "reference": {
+      "model_file": "neff_865605237854128_vnc_0.neff",
+      "samples_us": [
+        129.727,
+        129.565,
+        129.228,
+        128.847,
+        129.433,
+        129.059,
+        129.322,
+        129.397,
+        129.708,
+        129.432,
+        129.162,
+        129.789,
+        129.706,
+        130.165,
+        129.812,
+        129.472,
+        128.679,
+        129.698,
+        129.866,
+        129.179
+      ],
+      "n": 20,
+      "median_us": 129.4525,
+      "mean_us": 129.4623,
+      "p90_us": 129.81740000000002,
+      "min_us": 128.679,
+      "max_us": 130.165
+    },
+    "candidate": {
+      "model_file": "neff_654504988606241_vnc_0.neff",
+      "samples_us": [
+        126.761,
+        127.664,
+        127.552,
+        126.289,
+        126.919,
+        127.656,
+        126.365,
+        127.353,
+        127.24,
+        126.678,
+        127.38,
+        127.306,
+        126.674,
+        126.619,
+        127.034,
+        126.421,
+        126.677,
+        126.834,
+        126.927,
+        127.335
+      ],
+      "n": 20,
+      "median_us": 126.923,
+      "mean_us": 126.98420000000002,
+      "p90_us": 127.56240000000001,
+      "min_us": 126.289,
+      "max_us": 127.664
+    }
+  },
+  "median_speedup": 1.0199294060178217,
+  "median_reduction_percent": 1.9539985709043695,
+  "candidate_faster_pairs": 20
+}

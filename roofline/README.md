@@ -12,6 +12,10 @@ message the model writing the kernel can act on:
 
 `roofline.py` itself is pure Python and needs no Neuron SDK. Everything else runs in a seat pod.
 
+The [project README](../README.md) contains the subsequent agent and hardware experiments:
+three example-guided agent successes versus zero control successes, 50% less HBM traffic,
+and 12.9% lower profiled device median latency on the final target shape.
+
 ## Run it
 
 On your laptop, with kubectl working (Part 1 of the workshop repo's README). Use your own seat number:
@@ -86,8 +90,11 @@ Calibration, predicted latency ÷ model floor (lower is better):
 
 ## Caveats
 
-1. **Not checked against the chip.** On-chip runs fail with "cores busy" while `serve.sh` runs, because
-   the model server holds all four logical cores.
+1. **Calibration is based on compiler predictions.** Subsequent hardware checks cover the selected
+   matmul experiments in the [project README](../README.md); they do not validate every floor here.
+   Runtime initialization initially requested too many cores. The hardware experiments succeeded
+   with `NEURON_RT_NUM_CORES=1`, `NEURON_LOGICAL_NC_CONFIG=1`, and inherited
+   `NEURON_RT_VISIBLE_CORES` cleared for the benchmark process.
 2. **The compiler's model ignores dtype.** For fp32 matmul the docs say compute bound and the model says
    memory bound. Running in bf16 avoids the disagreement.
 3. **Small kernels are dominated by the 2.6 µs fixed cost**, so for levels 1–2 use the model-floor ratio,

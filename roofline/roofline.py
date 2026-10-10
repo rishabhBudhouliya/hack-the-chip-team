@@ -20,6 +20,8 @@ SDK: .../site-packages/nki/compiler/ncc_driver.py, nki/_backends/mlir_tracer/tar
 """
 import math
 from itertools import product
+import roofline as rl
+from predict import predict
 
 GHZ = 1e9
 DTYPE_BYTES = {"bfloat16": 2, "float16": 2, "float32": 4}

@@ -1,0 +1,75 @@
+{
+  "trials": [
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_transfer.jsonl",
+      "condition": "worked_example",
+      "success": true,
+      "valid_generated_candidates": 4,
+      "round_first_improvement": 0,
+      "best_predicted_ns": 110512,
+      "best_hbm_bytes": 7340032,
+      "best_code_ast_sha256": "282de1f7bcb3ccb1dbe168941203b79708e279e0cd46d3fc96876bf871f9519d"
+    },
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_transfer_control.jsonl",
+      "condition": "verbal_guidance_control",
+      "success": false,
+      "valid_generated_candidates": 0,
+      "round_first_improvement": null,
+      "best_predicted_ns": 131872,
+      "best_hbm_bytes": 14680064,
+      "best_code_ast_sha256": "b5202cdf4f351cdb1a9cb6cac9c5f3f75197e566d23e25b60a7393cdf9f52d34"
+    },
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_agent_repeats/20261010T190334/control_1.jsonl",
+      "condition": "verbal_guidance_control",
+      "success": false,
+      "valid_generated_candidates": 0,
+      "round_first_improvement": null,
+      "best_predicted_ns": 131872,
+      "best_hbm_bytes": 14680064,
+      "best_code_ast_sha256": "b5202cdf4f351cdb1a9cb6cac9c5f3f75197e566d23e25b60a7393cdf9f52d34"
+    },
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_agent_repeats/20261010T190334/control_2.jsonl",
+      "condition": "verbal_guidance_control",
+      "success": false,
+      "valid_generated_candidates": 0,
+      "round_first_improvement": null,
+      "best_predicted_ns": 131872,
+      "best_hbm_bytes": 14680064,
+      "best_code_ast_sha256": "b5202cdf4f351cdb1a9cb6cac9c5f3f75197e566d23e25b60a7393cdf9f52d34"
+    },
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_agent_repeats/20261010T190334/example_1.jsonl",
+      "condition": "worked_example",
+      "success": true,
+      "valid_generated_candidates": 4,
+      "round_first_improvement": 0,
+      "best_predicted_ns": 110512,
+      "best_hbm_bytes": 7340032,
+      "best_code_ast_sha256": "282de1f7bcb3ccb1dbe168941203b79708e279e0cd46d3fc96876bf871f9519d"
+    },
+    {
+      "log": "/Users/kazuhidelee/Desktop/hack-the-chip-team/roofline/roofline_agent_repeats/20261010T190334/example_2.jsonl",
+      "condition": "worked_example",
+      "success": true,
+      "valid_generated_candidates": 4,
+      "round_first_improvement": 0,
+      "best_predicted_ns": 110512,
+      "best_hbm_bytes": 7340032,
+      "best_code_ast_sha256": "282de1f7bcb3ccb1dbe168941203b79708e279e0cd46d3fc96876bf871f9519d"
+    }
+  ],
+  "worked_example_successes": 3,
+  "control_successes": 0,
+  "budget": {
+    "rounds": 4,
+    "samples_per_round": 1
+  },
+  "shape": {
+    "M": 1024,
+    "K": 256,
+    "N": 1024
+  }
+}

@@ -1,0 +1,37 @@
+endpoint http://localhost:8000/v1  model Qwen/Qwen3-8B
+Optimization target: {'M': 1024, 'K': 256, 'N': 1024}, float32; reuse example: True
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+Seed baseline: 131.87 us, 6.70x model floor, 14336 KiB
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+round 0: predicted 110.51 us, 5.61x model floor, 7168 KiB
+    (prompt is ~1615 tokens, so the answer budget is capped at 2417 to stay inside the 4096-token context)
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+round 1: predicted 110.51 us, 5.61x model floor, 7168 KiB
+    (prompt is ~1672 tokens, so the answer budget is capped at 2360 to stay inside the 4096-token context)
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+round 2: predicted 110.51 us, 5.61x model floor, 7168 KiB
+    (prompt is ~1672 tokens, so the answer budget is capped at 2360 to stay inside the 4096-token context)
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+round 3: predicted 110.51 us, 5.61x model floor, 7168 KiB
+Fastest correct compiled kernel: 110.51 us; saved to roofline_agent_repeats/20261010T190334/example_2_best.py. This is a compiler prediction, not a hardware timing.
+
+=========== summary ===========
+  level 4  reward 1.00 after 4 round(s)  SOLVED
+  solved 1/1
+
+attempts logged to roofline_agent_repeats/20261010T190334/example_2.jsonl

@@ -1,0 +1,18 @@
+endpoint http://localhost:8000/v1  model Qwen/Qwen3-8B
+Optimization target: {'M': 1024, 'K': 256, 'N': 1024}, float32; reuse example: False
+===-------------------------------------------------------------------------===
+                         ... Pass statistics report ...
+===-------------------------------------------------------------------------===
+
+Seed baseline: 131.87 us, 6.70x model floor, 14336 KiB
+round 0: correctness reward 0.30; 0 of 4 shapes passed. On K=128 M=128 N=512: raised UnboundLocalError: cannot access local variable 'k' where it is not associated with a value
+round 1: correctness reward 0.30; 0 of 4 shapes passed. On K=128 M=128 N=512: raised UnboundLocalError: cannot access local variable 'k' where it is not associated with a value
+round 2: correctness reward 0.30; 0 of 4 shapes passed. On K=128 M=128 N=512: raised AssertionError: Out-of-bound access for tensor `unnamed` on dimension 0: index range [0, 511] exceed dimension size of 128. You indexed up to 511 on dimension 0, which is only 128 long. Tile limits are a MAXIMUM, not a target. Derive every bound from the tensor's own shape -- use min(limit, size) and let the final chunk be partial -- rather than w
+round 3: correctness reward 0.30; 0 of 4 shapes passed. On K=128 M=128 N=512: raised AssertionError: Out-of-bound access for tensor `unnamed` on dimension 0: index range [0, 511] exceed dimension size of 128. You indexed up to 511 on dimension 0, which is only 128 long. Tile limits are a MAXIMUM, not a target. Derive every bound from the tensor's own shape -- use min(limit, size) and let the final chunk be partial -- rather than w
+Fastest correct compiled kernel: 131.87 us; saved to roofline_agent_repeats/20261010T190334/control_1_best.py. This is a compiler prediction, not a hardware timing.
+
+=========== summary ===========
+  level 4  reward 1.00 after 4 round(s)  SOLVED
+  solved 1/1
+
+attempts logged to roofline_agent_repeats/20261010T190334/control_1.jsonl
