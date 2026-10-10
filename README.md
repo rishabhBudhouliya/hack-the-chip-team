@@ -16,6 +16,8 @@ Target operation: `C = A × B`, with `M=1024`, `K=256`, `N=1024`, float32 inputs
 outputs, compiled for Trainium2 with one physical NeuronCore (`LNC=1`). The kernel
 receives the left operand already transposed as `lhsT[K, M]`.
 
+![Comparison of HBM traffic, compiler prediction, and measured device median: caching lowers traffic by 50%, predicted latency by 16.2%, and device median by 12.9%.](docs/figures/results-overview.png)
+
 | Metric | Original reference | Agent-generated RHS cache | Change |
 |---|---:|---:|---:|
 | Simulator HBM traffic | 14 MiB | 7 MiB | 50% less |
@@ -63,6 +65,8 @@ target shape, four rounds, and one candidate per round. Each run started in a
 fresh agent process. The example was validated at `M=512, K=256, N=1024`; the
 target doubled M to 1024 while keeping K and N fixed.
 
+![Three trials per condition: all three worked-example runs found a correct improvement; none of the verbal-guidance control runs did.](docs/figures/agent-outcomes.png)
+
 | Outcome | With worked code example | Control without worked code example |
 |---|---:|---:|
 | Runs finding a correct, compiled improvement | 3/3 | 0/3 |
@@ -95,6 +99,21 @@ The modified agent continues after finding a correct kernel, ranks correct
 compiled candidates by predicted latency, logs every attempt, and preserves the
 fastest valid candidate even if later revisions fail.
 
+```mermaid
+flowchart TD
+    S["Reference kernel + target shape"] --> A["Agent proposes a change"]
+    E["Worked RHS caching example"] --> A
+    A --> C["Lab checker: rules + correctness"]
+    C -->|Fails| F["Repair feedback"]
+    F --> A
+    C -->|Passes| P["HBM traffic + compiler prediction"]
+    R["Roofline: ideal work, bytes, and time"] --> D["Performance diagnosis"]
+    P --> D
+    D --> A
+    P --> W["Keep fastest correct compiled kernel"]
+    W --> H["Hardware correctness + device profile"]
+```
+
 The tool reports two separate floors:
 
 - **Hardware floor:** an ideal time estimate from documented resource peaks,
@@ -121,6 +140,8 @@ The analysis excludes validation and warmups and uses `ExecutionInfo.parquet`
 device start/end timestamps. The corresponding runtime `nc_exec_running`
 durations agree within 1 ns. Model IDs distinguish the kernels after mapping
 the initial reference-then-candidate execution order.
+
+![Device time saved in each of 20 paired iterations. Every pair favors the cached kernel; this is one capture, with validation and warmups excluded.](docs/figures/device-latency-savings.png)
 
 The prepared execution-call wall-time benchmark includes runtime and transfer
 overhead. We used device traces to assess the kernel improvement rather than
@@ -205,6 +226,11 @@ python roofline/analyze_device_profiles.py roofline_decoded_transfer \
 | [Target device timing analysis](roofline/device_transfer.json) | Per-execution samples and medians |
 | [Target profile tables](roofline/roofline_decoded_transfer/) | Decoded device and runtime traces |
 | [Earlier cache report](roofline/device_cached_report.md) | Explicit caching experiment and repeat captures at M=512 |
+
+The figures are generated from the saved logs and timing analysis by
+[plot_findings.py](roofline/plot_findings.py). With Matplotlib and NumPy available,
+run `python roofline/plot_findings.py` to regenerate the PNG and SVG assets under
+`docs/figures/`.
 
 ## Limits of the findings
 
